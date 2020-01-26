@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <title>Email Signature Generator</title>
+    <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="img/logo.png" alt="" width="96" height="96">
+        <h2>Email Signature Generator</h2>
+        <p class="lead">Fill your informations below, generate and paste in your email client.</p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card mb-6 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Your informations</h4>
+                </div>
+                <div class="card-body">
+
+                    <form class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">First name</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Raphaël" value="Raphaël" required>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Last name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Barbate" value="Barbate" required>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="rb@potsky.com" value="rb@potsky.com" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid email address.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone">Mobile</label>
+                            <input type="tel" class="form-control" id="phone" pattern="^0[6-7]([0-9][0-9]){4}$" placeholder="0661630392" value="0661630392" required>
+                            <div class="invalid-feedback">
+                                Your mobile must use this format <code>0616641664</code>.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="position">LinkedIn</label>
+                            <input type="text" class="form-control" id="li" placeholder="https://www.linkedin.com/in/raphaelbarbate/" value="https://www.linkedin.com/in/raphaelbarbate/" required>
+                            <div class="invalid-feedback">
+                                Your LinkedIn is required.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="position">GitHub</label>
+                            <input type="text" class="form-control" id="gh" placeholder="https://github.com/potsky" value="https://github.com/potsky" required>
+                            <div class="invalid-feedback">
+                                Your Github is required.
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Generate</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6 mb-6">
+            <div class="card mb-6 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Your email signature</h4>
+                </div>
+                <div class="card-body">
+                    <div id="sign">
+                        <table border="0" cellpadding="0" class="" style="font-family: Helvetica, Arial, sans-serif; font-size: 14px; orphans: 2; widows: 2; background-color: rgb(255, 255, 255); color: rgb(78, 78, 78);">
+                            <tbody class="">
+                                <tr class="">
+                                    <td class="" style="margin: 0px; padding: 0px;">
+                                        <p class="">
+                                            <a href="https://www.potsky.com/?utm_source=email&utm_medium=email_signature" target="_blank" class="">
+                                                <span class="" style="text-decoration: none;">
+                                                    <img src="https://www.potsky.com/logo100.png" id="img" class="" />
+                                                </span>
+                                            </a>
+                                            <u class=""></u>
+                                        </p>
+                                    </td>
+                                    <td class="" style="margin: 0px; padding: 8pt;">
+                                        <p class="">
+                                            <font color="#333333" face="Helvetica, Arial, sans-serif" class=""><b><span id="signFirstName" class="font-weight:bold">Raphaël</span>&nbsp;<span id="signLastName" class="font-weight:bold">Barbate</span></b></font>
+                                            <br class="">
+                                            <font color="#666666" face="Helvetica, Arial, sans-serif" class=""><span id="signEmail" style="text-decoration: none;">rb@potsky.com</span></font>
+                                            <br class="">
+                                            <font color="#666666" face="Helvetica, Arial, sans-serif" class=""><span id="signMobile" style="text-decoration: none;">+33 (0)6 61 63 03 92</span></font>
+                                            <br class="">
+                                            <font color="#666666" face="Helvetica, Arial, sans-serif" class=""><a id="signLinkedIn" href="#"><img src="https://potsky.github.io/email-signature/img/li.png"/></a></font>
+                                            <font color="#666666" face="Helvetica, Arial, sans-serif" class=""><a id="signGitHub" href="#"><img src="https://potsky.github.io/email-signature/img/gh.png"/></a></font>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2019 Potsky</p>
+    </footer>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="js/vendor/clipboard-polyfill.js"></script>
+<script src="js/vendor/popper.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/vendor/holder.min.js"></script>
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict'
+
+    window.addEventListener('load', function () {
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.getElementsByClassName('needs-validation')
+
+      /*
+      $("#style").on("change",function(e,a) {
+        if ($("#style").val()==='1') {
+          $('#img').attr('src','http://tools.s3e.io/images/logo/email100.png')
+        }
+        else if ($("#style").val()==='2') {
+          $('#img').attr('src','http://tools.s3e.io/images/logo/email100.gif')
+        }
+      })
+      */
+
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener('submit', function (event) {
+          event.preventDefault()
+          event.stopPropagation()
+          form.classList.add('was-validated')
+
+          if (form.checkValidity() === true) {
+            var m = $('#phone').val()
+            var mobile = "+33 (0)" + m.substr(1,1) + " " + m.substr(2,2) + " " + m.substr(4,2) + " " + m.substr(6,2) + " " + m.substr(8,2)
+            $('#signFirstName').text($('#firstName').val())
+            $('#signLastName').text($('#lastName').val())
+            $('#signLinkedIn').attr('href',$('#li').val())
+            $('#signGitHub').attr('href',$('#gh').val())
+            $('#signMobile').text(mobile)
+            $('#signEmail').text($('#email').val())
+
+            var dt = new clipboard.DT();
+            dt.setData("text/html", $("#sign").html());
+            clipboard.write(dt);
+
+            return false
+          }
+        }, false)
+      })
+    }, false)
+  })()
+</script>
+</body>
+</html>
