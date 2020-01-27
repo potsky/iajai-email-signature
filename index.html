@@ -54,14 +54,14 @@
                                 Please enter a valid title.
                             </div>
                         </div>
-
+<!--
                         <div class="mb-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" placeholder="rb@iajai.com" value="rb@iajai.com" required>
                             <div class="invalid-feedback">
                                 Please enter a valid email address.
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="mb-3">
                             <label for="phone">Mobile</label>
@@ -281,6 +281,8 @@ function titleCase(str) {
             var lastname = titleCase($('#lastName').val());
             $('#signLastName').text(lastname);
 
+            var initials = firstname.substr(0,1).toLowerCase() + lastname.substr(0,1).toLowerCase()
+
             var m = $('#phone').val();
             var mobile = "+33 (0)" + m.substr(1,1) + " " + m.substr(2,2) + " " + m.substr(4,2) + " " + m.substr(6,2) + " " + m.substr(8,2);
             var mobilelink = "+33" + m.substr(1,1) + m.substr(2,2) + m.substr(4,2) + m.substr(6,2) + m.substr(8,2);
@@ -289,12 +291,11 @@ function titleCase(str) {
 
             $('#signTitle').text($('#title').val());
 
-            var url = 'https://potsky.github.io/iajai-email-signature/img/' +
-                            $('#firstName').val().substr(0,1).toLowerCase() +
-                            $('#lastName').val().substr(0,1).toLowerCase() + '.jpg';
+            var url = 'https://potsky.github.io/iajai-email-signature/img/' + initials + '.jpg';
             $('#signImage').attr('src', url);
 
-            var email = $('#email').val().toLowerCase();
+//            var email = $('#email').val().toLowerCase();
+            var email = initials + '@iajai.com';
             $('#signEmail').text(email);
             $('#signEmail').attr('href','mailto:'+email);
 
