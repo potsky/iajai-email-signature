@@ -48,8 +48,16 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="title">Title</label>
+                            <input class="form-control" id="title" placeholder="CEO &amp; co-fondateur" value="CEO &amp; co-fondateur" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid title.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="rb@potsky.com" value="rb@potsky.com" required>
+                            <input type="email" class="form-control" id="email" placeholder="rb@iajai.com" value="rb@iajai.com" required>
                             <div class="invalid-feedback">
                                 Please enter a valid email address.
                             </div>
@@ -89,7 +97,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td style="width: 80px;">
-                                                                    <img src="https://potsky.github.io/iajai-email-signature/img/rb.jpg" style="border-radius: 50%; display: block; font-size: 13px; outline: none; width: 80px; height: auto; border: none;" width="80"/>
+                                                                    <img id="signImage" src="https://potsky.github.io/iajai-email-signature/img/rb.jpg" style="border-radius: 50%; display: block; font-size: 13px; outline: none; width: 80px; height: auto; border: none;" width="80"/>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -119,9 +127,9 @@
                                                 <td style="overflow-wrap: break-word; font-size: 0px; padding: 10px 25px;" align="left">
                                                     <div style="color:#102018; font-family: Ubuntu, Helvetica, Arial, sans-serif; font-size: 13px; line-height: 22px;">
                                                         <span style="display: block; font-weight: bold;"><span id="signFirstName">Raphaël</span>&nbsp;<span id="signLastName">Barbate</span></span>
-                                                        <span style="display: block; font-weight: lighter;">CEO &amp; co-fondateur</span>
-                                                        <a target="_blank" id="signMobile" href="tel:+33661630392" style="color:#446655;text-decoration:none;">+33 6 61 63 03 92</a><br/>
-                                                        <a target="_blank" id="signEMail" href="mailto:rb@iajai.com" style="color:#446655;text-decoration:none;">rb@iajai.com</a><br/>
+                                                        <span style="display: block; font-weight: lighter;" id="signTitle">CEO &amp; co-fondateur</span>
+                                                        <a target="_blank" id="signMobile" href="tel:+33661630392" style="color:#446655;text-decoration:none;">+33 (0)6 61 63 03 92</a><br/>
+                                                        <a target="_blank" id="signEmail" href="mailto:rb@iajai.com" style="color:#446655;text-decoration:none;">rb@iajai.com</a><br/>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -135,7 +143,7 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td style="vertical-align: middle; width: 20px; height: 20px;" valign="middle">
-                                                                                    <a target="_blank" href="#">
+                                                                                    <a target="_blank" href="https://www.linkedin.com/company/iajai?utm_source=email&utm_medium=email_signature">
                                                                                         <img src="https://potsky.github.io/iajai-email-signature/img/linkedin.png" style="display: block; border-radius: 3px;" width="20" height="20"/>
                                                                                     </a>
                                                                                 </td>
@@ -154,7 +162,7 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td style="vertical-align: middle; width: 20px; height: 20px;" valign="middle">
-                                                                                    <a target="_blank" href="#">
+                                                                                    <a target="_blank" href="https://www.instagram.com/iajaicom/?utm_source=email&utm_medium=email_signature">
                                                                                         <img src="https://potsky.github.io/iajai-email-signature/img/insta.png" style="display: block; border-radius: 3px;" width="20" height="20"/>
                                                                                     </a>
                                                                                 </td>
@@ -173,7 +181,7 @@
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td style="vertical-align: middle; width: 20px; height: 20px;" valign="middle">
-                                                                                    <a target="_blank" href="#">
+                                                                                    <a target="_blank" href="https://www.twitter.com/iajaicom/?utm_source=email&utm_medium=email_signature">
                                                                                         <img src="https://potsky.github.io/iajai-email-signature/img/twitter.png" style="display: block; border-radius: 3px;" width="20" height="20"/>
                                                                                     </a>
                                                                                 </td>
@@ -232,7 +240,14 @@
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/vendor/holder.min.js"></script>
 <script>
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
+function titleCase(str) {
+  str = str.toLowerCase().split(' ');
+  for (var i = 0; i < str.length; i++) {
+    str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+  }
+  return str.join(' ');
+}
+
   (function () {
     'use strict'
 
@@ -255,23 +270,39 @@
       // Loop over them and prevent submission
       var validation = Array.prototype.filter.call(forms, function (form) {
         form.addEventListener('submit', function (event) {
-          event.preventDefault()
-          event.stopPropagation()
-          form.classList.add('was-validated')
+          event.preventDefault();
+          event.stopPropagation();
+          form.classList.add('was-validated');
 
           if (form.checkValidity() === true) {
-            var m = $('#phone').val()
-            var mobile = "+33 (0)" + m.substr(1,1) + " " + m.substr(2,2) + " " + m.substr(4,2) + " " + m.substr(6,2) + " " + m.substr(8,2)
-            $('#signFirstName').text($('#firstName').val())
-            $('#signLastName').text($('#lastName').val())
-            $('#signMobile').text(mobile)
-            $('#signEmail').text($('#email').val())
+            var firstname = titleCase($('#firstName').val());
+            $('#signFirstName').text(firstname);
+
+            var lastname = titleCase($('#lastName').val());
+            $('#signLastName').text(lastname);
+
+            var m = $('#phone').val();
+            var mobile = "+33 (0)" + m.substr(1,1) + " " + m.substr(2,2) + " " + m.substr(4,2) + " " + m.substr(6,2) + " " + m.substr(8,2);
+            var mobilelink = "+33" + m.substr(1,1) + m.substr(2,2) + m.substr(4,2) + m.substr(6,2) + m.substr(8,2);
+            $('#signMobile').text(mobile);
+            $('#signMobile').attr('href','tel:'+mobilelink);
+
+            $('#signTitle').text($('#title').val());
+
+            var url = 'https://potsky.github.io/iajai-email-signature/img/' +
+                            $('#firstName').val().substr(0,1).toLowerCase() +
+                            $('#lastName').val().substr(0,1).toLowerCase() + '.jpg';
+            $('#signImage').attr('src', url);
+
+            var email = $('#email').val().toLowerCase();
+            $('#signEmail').text(email);
+            $('#signEmail').attr('href','mailto:'+email);
 
             var dt = new clipboard.DT();
             dt.setData("text/html", $("#sign").html());
             clipboard.write(dt);
 
-            return false
+            return false;
           }
         }, false)
       })
